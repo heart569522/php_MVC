@@ -18,4 +18,3 @@
             $this->connect->set_charset($this->charactor);
         }
     }
-?>
