@@ -6,10 +6,10 @@
             $data = $this->statement->get_result()->fetch_all(MYSQLI_ASSOC);
             foreach ($data as $row){
                 echo "<tr>
-                        <th scope='row'>".$row['id']."</th>
+                        <th class='text-center' scope='row'>".$row['id']."</th>
                         <td> <a href='?id={$row['id']}'>".$row['quote']."</a> </td>
                         <td>".$row['price']."</td>
-                        <td>
+                        <td class='text-center'>
                             <a class='btn btn-danger' href='?idd={$row['id']}&delete=allow'>Delete</a>
                             <a class='btn btn-warning' href='?idu={$row['id']}&edit=allow&update=disallow'>Edit</a>
                         </td>

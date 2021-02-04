@@ -2,6 +2,7 @@
     class Ctrl extends Controller {
         private $readData;
         private $addData;
+        private $command;
 
         public function __construct() {
             $this->readData = new Read();
