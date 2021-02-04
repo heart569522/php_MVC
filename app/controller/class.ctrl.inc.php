@@ -3,10 +3,12 @@
         private $readData;
         private $addData;
         private $command;
+        private $deleteData;
 
         public function __construct() {
             $this->readData = new Read();
             $this->addData = new Create();
+            $this->deleteData = new Delete();
         }
 
         public function run() {
@@ -29,10 +31,10 @@
                 $quote = isset($_GET['quote']) ? $_GET['quote'] : null;
                 $price = isset($_GET['price']) ? $_GET['price'] : null;
                 $status = $this->addData->createData($quote, $price);
-                if($status){
-                    echo "<scriptt>alert('Saved.')</scriptt>";
-                    echo "<scriptt>window.location = './'</scriptt>";
-                }
+                    if($status){
+                        echo "<scriptt>alert('Saved.')</scriptt>";
+                        echo "<scriptt>window.location = './'</scriptt>";
+                    }
             } else {
                 // Fetch All
                 $data = $this->readData;
