@@ -22,8 +22,13 @@
             //     }
             // }
 
-            // Fetch All
-            $data = $this->readData;
-            include_once './app/view/view.fetchAll.inc.php';
-        }
+            $this->command = isset($_GET['add_data']) ? $_GET['add_data'] : null;
+            if($this->command == "allow"){
+                include_once './app/view/view.createData.inc.php';
+            } else {
+                // Fetch All
+                $data = $this->readData;
+                include_once './app/view/view.fetchAll.inc.php';
+            }   
+        } //function run()
     }
