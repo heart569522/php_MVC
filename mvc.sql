@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2021 at 08:49 AM
+-- Generation Time: Feb 04, 2021 at 08:58 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -41,7 +41,18 @@ CREATE TABLE `common_stock` (
 INSERT INTO `common_stock` (`id`, `quote`, `price`) VALUES
 (1, 'sdfs', 231.00),
 (2, 'dog', 100.00),
-(3, 'cat', 500.00);
+(3, 'cat', 500.00),
+(4, 'hotdog', 15.00),
+(5, 'gooo', 555.00),
+(6, 'popo', 12.50),
+(7, 'tttt', 2222.00),
+(8, 'nnn', 100.00),
+(9, 'lol', 555.00),
+(10, 'vvv', 1.00),
+(11, 'mmmm', 23.00),
+(12, 'trtr', 65.00),
+(13, 'ewew', 54.00),
+(14, 'qwer', 879.00);
 
 --
 -- Indexes for dumped tables
@@ -61,7 +72,7 @@ ALTER TABLE `common_stock`
 -- AUTO_INCREMENT for table `common_stock`
 --
 ALTER TABLE `common_stock`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
