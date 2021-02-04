@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Add Common Stock</h1>
         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
-            <input type="hidden" name="query" value="allow">
+            <input type="hidden" name="write" value="allow">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <label class="form-label">Quote</label>

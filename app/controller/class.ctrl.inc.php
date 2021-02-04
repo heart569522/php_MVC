@@ -25,6 +25,14 @@
             $this->command = isset($_GET['add_data']) ? $_GET['add_data'] : null;
             if($this->command == "allow"){
                 include_once './app/view/view.createData.inc.php';
+            } elseif(isset($_GET['write']) == "allow"){
+                $quote = isset($_GET['quote']) ? $_GET['quote'] : null;
+                $price = isset($_GET['price']) ? $_GET['price'] : null;
+                $status = $this->addData->createData($quote, $price);
+                if($status){
+                    echo "<scriptt>alert('Saved.')</scriptt>";
+                    echo "<scriptt>window.location = './'</scriptt>";
+                }
             } else {
                 // Fetch All
                 $data = $this->readData;
