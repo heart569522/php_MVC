@@ -32,10 +32,20 @@
                 $price = isset($_GET['price']) ? $_GET['price'] : null;
                 $status = $this->addData->createData($quote, $price);
                     if($status){
-                        echo "<scriptt>alert('Saved.')</scriptt>";
-                        echo "<scriptt>window.location = './'</scriptt>";
+                        echo "<script>alert('Saved.')</script>";
+                        echo "<script>window.location = './'</script>";
                     }
-            } else {
+            } elseif(isset($_GET['delete']) == "allow"){
+                $id = isset($_GET['idd']) ? $_GET['idd'] : null;
+                if($id){
+                    $status = $this->deletData->deleteData($id);
+                    if($status){
+                        echo "<script>window.location.assign('?')</script>";
+                    }
+                }
+            }
+            
+            else {
                 // Fetch All
                 $data = $this->readData;
                 include_once './app/view/view.fetchAll.inc.php';
