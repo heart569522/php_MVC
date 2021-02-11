@@ -12,17 +12,6 @@
         }
 
         public function run() {
-            // Add Data
-            // $quote = isset($_GET['quote']) ? $_GET['quote'] : null;
-            // $price = isset($_GET['price']) ? $_GET['price'] : null;
-            // if ($quote == null or $price == null) {
-            //     include_once './app/view/view.createData.inc.php';
-            // } else {
-            //     $status = $this->addData->createData($quote, $price);
-            //     if($status) {
-            //         echo "<script>window.location.assign('?')</script>";
-            //     }
-            // }
 
             $this->command = isset($_GET['add_data']) ? $_GET['add_data'] : null;
             if($this->command == "allow"){
@@ -38,7 +27,7 @@
             } elseif(isset($_GET['delete']) == "allow"){
                 $id = isset($_GET['idd']) ? $_GET['idd'] : null;
                 if($id){
-                    $status = $this->deletData->deleteData($id);
+                    $status = $this->deleteData->deleteData($id);
                     if($status){
                         echo "<script>window.location.assign('?')</script>";
                     }
