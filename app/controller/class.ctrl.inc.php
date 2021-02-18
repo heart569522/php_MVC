@@ -32,9 +32,26 @@
                         echo "<script>window.location.assign('?')</script>";
                     }
                 }
-            }
-            
-            else {
+            } elseif(isset($_GET['upload']) == "allow") {
+                $targetFile = "picture/";
+                if(isset($_FILES['fileUpload'])) {
+                    foreach($_FILES['fileUpload']['tmp_name'] as $key => $val) {
+                        $fileName = $_FILES['fileUpload']['name'][$key];
+                        $fileSize = $_FILES['fileUpload']['size'][$key];
+                        $fileTmp = $_FILES['fileUpload']['tmp_name'][$key];
+                        $fileType = $_FILES['fileUpload']['type'][$key];
+                        if($this->objUploadPicture->uploadFile($fileTmp, $targetFile, $fileName)) {
+                            $status = $this->objCreatePicture->objUploadPicture($_SESSION['IDCOM'], $fileName, $targetFile);
+                            
+                        } else {
+
+                        }
+                    }
+                } else {
+                    $_SESSION['IDCOM'] = $_GET['idp'];
+                    include_once './app/view/view.importPicture.inc.php';
+                }
+            } else {
                 // Fetch All
                 $data = $this->readData;
                 include_once './app/view/view.fetchAll.inc.php';
