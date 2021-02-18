@@ -7,7 +7,7 @@
             $row = 1;
             foreach ($data as $datas){
                 echo "<tr>
-                        <th class='text-center' scope='row'>".$row."</th>
+                        <th class='text-center' scope='row'><a href='?idcom={$datas['id']}'>".$row."</a></th>
                         <td> <a href='?id={$datas['id']}'>".$datas['quote']."</a> </td>
                         <td>".$datas['price']."</td>
                         <td class='text-center'>
@@ -18,6 +18,14 @@
                       </tr>";
                 $row++;
             }
+        }
+
+        public function readPicture($id) {
+            $this->statement = $this->connect->prepare("SELECT * FROM picture WHERE idcom = ?");
+            $this->statement->bind_param('i', '$id');
+            $this->statement->execute();
+            $data = $this->statement->get_result()->fetch_assoc();
+            return array($data['$id'], $data['name'], $data['path'], $data['']);
         }
     }
     

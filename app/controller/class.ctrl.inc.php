@@ -7,7 +7,7 @@
         // private $updateData;
         private $objUploadPicture;
         private $objCreatePicture;
-        // private $objPicture;
+        private $objPicture;
 
         public function __construct() {
             $this->readData = new Read();
@@ -16,7 +16,7 @@
             // $this->updateData = new Update();
             $this->objUploadPicture = new Upload();
             $this->objCreatePicture = new Create();
-            // $this->objPicture = new Picture();
+            $this->objPicture = new Read();
         }
 
         public function run() {
@@ -62,6 +62,10 @@
                     $_SESSION['IDCOM'] = $_GET['idp'];
                     include_once './app/view/view.importPicture.inc.php';
                 }
+            } elseif(isset($_GET['$idcom'])) {
+                $idcom = $_GET['idcom'];
+                $arrData = $this->objPicture->readPicture($idcom);
+                include_once './app/view/view.picture.inc.php';
             } else {
                 // Fetch All
                 $data = $this->readData;
