@@ -11,6 +11,7 @@
                         <td> <a href='?id={$datas['id']}'>".$datas['quote']."</a> </td>
                         <td>".$datas['price']."</td>
                         <td class='text-center'>
+                            <a class='btn btn-info' href='?idp={$datas['id']}&upload=disallow'>Upload</a>
                             <a class='btn btn-danger' href='?idd={$datas['id']}&delete=allow'>Delete</a>
                             <a class='btn btn-warning' href='?idu={$datas['id']}&edit=allow&update=disallow'>Edit</a>
                         </td>

@@ -4,11 +4,19 @@
         private $addData;
         private $command;
         private $deleteData;
+        // private $updateData;
+        private $objUploadPicture;
+        private $objCreatePicture;
+        // private $objPicture;
 
         public function __construct() {
             $this->readData = new Read();
             $this->addData = new Create();
             $this->deleteData = new Delete();
+            // $this->updateData = new Update();
+            $this->objUploadPicture = new Upload();
+            $this->objCreatePicture = new Create();
+            // $this->objPicture = new Picture();
         }
 
         public function run() {
@@ -42,7 +50,10 @@
                         $fileType = $_FILES['fileUpload']['type'][$key];
                         if($this->objUploadPicture->uploadFile($fileTmp, $targetFile, $fileName)) {
                             $status = $this->objCreatePicture->objUploadPicture($_SESSION['IDCOM'], $fileName, $targetFile);
-                            
+                            if($status) {
+                               echo "<script>alert('Upload File Success')</script>";
+                               echo "<script>window.location.assign('?')</script>"; 
+                            }
                         } else {
 
                         }
