@@ -13,10 +13,7 @@
         public function createPicture($idcom, $name, $path) {
             $this->statement = $this->connect->prepare("INSERT INTO picture (idcom, name, path) VALUES (?, ?, ?)");
             $this->statement->bind_param("iss", $idcom, $name, $path);
-            if($this->statement->execute()) {
-                return true;
-            } else {
-                return false;
-            }
+            return $this->statement->execute();
+        
         }
     }
