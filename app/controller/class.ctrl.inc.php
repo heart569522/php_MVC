@@ -49,7 +49,7 @@
                         $fileTmp = $_FILES['fileUpload']['tmp_name'][$key];
                         $fileType = $_FILES['fileUpload']['type'][$key];
                         if($this->objUploadPicture->uploadFile($fileTmp, $targetFile, $fileName)) {
-                            $status = $this->objCreatePicture->objUploadPicture($_SESSION['IDCOM'], $fileName, $targetFile);
+                            $status = $this->objCreatePicture->createPicture($_SESSION['IDCOM'], $fileName, $targetFile);
                             if($status) {
                                echo "<script>alert('Upload File Success')</script>";
                                echo "<script>window.location.assign('?')</script>"; 
