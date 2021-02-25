@@ -50,7 +50,7 @@
                 } else {
                     $status = $this->updateData->updateData($idu, $quote, $price);
                     if($status) {
-                        // echo "<script>alert('Edit Data Success')</script>";
+                        echo "<script>alert('Edit Data Success')</script>";
                         echo "<script>window.location.assign('?')</script>"; 
                     }
                 }
