@@ -27,6 +27,20 @@
             $data = $this->statement->get_result()->fetch_assoc();
             return array($data['$id'], $data['name'], $data['path'], $data['']);
         }
+
+        public function fetchAssoc($id) {
+            $this->statement = $this->connect->prepare("SELECT * FROM common_stock WHERE idcom = ?");
+            $this->statement->bind_param('i', '$id');
+            $this->statement->execute();
+            $data = $this->statement->get_result()->fetch_all(MYSQI_ASSOC);
+
+            foreach($data as $row) {
+                $id = $row['id'];
+                $quote = $row['quote'];
+                $price = $row['price'];
+            }
+            return array($row['$id'], $row['qoute'], $row['price']);
+        }
     }
     
 ?>
