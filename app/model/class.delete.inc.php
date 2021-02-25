@@ -10,4 +10,10 @@
                 return false;
             }
         }
+        function checkFile($path) {
+            return file_exists($path);
+        }
+        function deleteFile($path) {
+            return unlink($path);
+        }
     }

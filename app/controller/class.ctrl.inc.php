@@ -34,10 +34,18 @@
                 }
             } elseif(isset($_GET['delete']) == "allow"){
                 $id = isset($_GET['idd']) ? $_GET['idd'] : null;
-                if($id){
-                    $status = $this->deleteData->deleteData($id);
-                    if($status){
-                        echo "<script>window.location.assign('?')</script>";
+                if($id != null){
+                    $arrDataPicture = $this->objPicture->readPicture($id);
+                    $path = $arrDataPicture[3].$arrDataPicture[2];
+                    if($this->deleteData->checkFile($path)) {
+                        $this->deleteData->deleteFile($path);
+                        $this->deleteData->checkData($id);
+                    } else {
+                        $this->deleteData->deleteData($id);
+                        echo "<script>
+                                alert('Deleted');
+                                window.location.assign('?');
+                              </script>";                        
                     }
                 }
             } elseif(isset($_GET['edit']) == "allow") {

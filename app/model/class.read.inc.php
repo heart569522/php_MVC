@@ -1,5 +1,19 @@
 <?php
     Class Read extends Database {
+        public function fetchAssoc($id) {
+            $this->statement = $this->connect->prepare("SELECT * FROM common_stock WHERE id = ?");
+            $this->statement->bind_param("i", $id);
+            $this->statement->execute();
+            $data = $this->statement->get_result()->fetch_all(MYSQI_ASSOC);
+
+            foreach($data as $row) {
+                $id = $row['id'];
+                $quote = $row['quote'];
+                $price = $row['price'];
+            }
+            return array($row['id'], $row['quote'], $row['price']);
+        }
+        
         public function fetchAll() {
             $this->statement = $this->connect->prepare("SELECT * FROM common_stock");
             $this->statement->execute();
@@ -28,19 +42,7 @@
             return array($data['$id'], $data['name'], $data['path'], $data['']);
         }
 
-        public function fetchAssoc($id) {
-            $this->statement = $this->connect->prepare("SELECT * FROM common_stock WHERE id = ?");
-            $this->statement->bind_param("i", $id);
-            $this->statement->execute();
-            $data = $this->statement->get_result()->fetch_all(MYSQI_ASSOC);
-
-            foreach($data as $row) {
-                $id = $row['id'];
-                $quote = $row['quote'];
-                $price = $row['price'];
-            }
-            return array($row['$id'], $row['quote'], $row['price']);
-        }
+        
     }
     
 ?>
