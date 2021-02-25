@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <label class="form-label">Price</label>
-                    <input class="form-control" type="text" name="price" value="<?=$data[1] ?>">
+                    <input class="form-control" type="text" name="price" value="<?=$data[2] ?>">
                 </div>
             </div>
             <br>
