@@ -4,7 +4,7 @@
         private $addData;
         private $command;
         private $deleteData;
-        // private $updateData;
+        private $updateData;
         private $objUploadPicture;
         private $objCreatePicture;
         private $objPicture;
@@ -13,7 +13,7 @@
             $this->readData = new Read();
             $this->addData = new Create();
             $this->deleteData = new Delete();
-            // $this->updateData = new Update();
+            $this->updateData = new Update();
             $this->objUploadPicture = new Upload();
             $this->objCreatePicture = new Create();
             $this->objPicture = new Read();
@@ -28,16 +28,30 @@
                 $quote = isset($_GET['quote']) ? $_GET['quote'] : null;
                 $price = isset($_GET['price']) ? $_GET['price'] : null;
                 $status = $this->addData->createData($quote, $price);
-                    if($status){
-                        echo "<script>alert('Saved.')</script>";
-                        echo "<script>window.location = './'</script>";
-                    }
+                if($status){
+                    echo "<script>alert('Saved.')</script>";
+                    echo "<script>window.location = './'</script>";
+                }
             } elseif(isset($_GET['delete']) == "allow"){
                 $id = isset($_GET['idd']) ? $_GET['idd'] : null;
                 if($id){
                     $status = $this->deleteData->deleteData($id);
                     if($status){
                         echo "<script>window.location.assign('?')</script>";
+                    }
+                }
+            } elseif(isset($_GET['edit']) == "allow") {
+                $idu = isset($_GET['idu']) ? $_GET['idu'] : null;
+                $quote = isset($_GET['quote']) ? $_GET['quote'] : null;
+                $price = isset($_GET['price']) ? $_GET['price'] : null;
+                if($_GET['edit'] == "allow" && $_GET['update'] == "disallow"){
+                    $data = $this->readData->fetchAssoc($idu);
+                    include_once './app/view/view.edit.inc.php';
+                } else {
+                    $status = $this->updateData->updateData($idu, $quote, $price);
+                    if($status) {
+                        echo "<script>alert('Edit Data Success')</script>";
+                        echo "<script>window.location.assign('?')</script>"; 
                     }
                 }
             } elseif(isset($_GET['upload']) == "allow") {
@@ -66,7 +80,9 @@
                 $idcom = $_GET['idcom'];
                 $arrData = $this->objPicture->readPicture($idcom);
                 include_once './app/view/view.picture.inc.php';
-            } else {
+            } /*elseif() {
+                
+            } */else {
                 // Fetch All
                 $data = $this->readData;
                 include_once './app/view/view.fetchAll.inc.php';

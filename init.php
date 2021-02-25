@@ -9,6 +9,7 @@
      require_once './app/model/class.create.inc.php';
      require_once './app/model/class.delete.inc.php';
      require_once './app/model/class.upload.inc.php';
+     require_once './app/model/class.update.inc.php';
  
      // require_once './app/view/class.createData.inc.php';
  
